@@ -1,0 +1,32 @@
+@media( max-width: 1200px) {}
+
+@media ( max-width: 992px) {}
+
+@media ( max-width: 768px) {
+    .header {
+        margin: 0px 20px 0 20px;
+    }
+    .promo {
+        &__wrapper {
+            margin: 80px 20px 0 0;
+        }
+        &__header {
+            font-size: 38px;
+        }
+        &__subheader {
+            font-size: 23px;
+        }
+        &__icons {
+            width: 400px;
+        }
+    }
+    .advantages {
+        &__icons {
+            width: 750px;
+            margin-top: 50px;
+        }
+        &__icon {
+            margin: 0px 12px 0 12px;
+        }
+    }
+}
