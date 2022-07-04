@@ -9,7 +9,12 @@
     text-transform: uppercase;
     color: #FFFFFF;
     text-align: center;
+    &:active {
+        background-color: $active-color;
+    }
     &:hover {
+        box-shadow: 3px 3px 20px $hover-color;
+        border: none;
         color: #fff;
         text-decoration: none;
     }
@@ -30,5 +35,6 @@
         width: 135px;
         height: 44px;
         font-size: 14px;
+        transition: 0.3s all;
     }
 }
