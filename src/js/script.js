@@ -33,11 +33,11 @@ $(document).ready(function() {
     toggleSlide('.catalog-item__back');
 
     //Modal
-
+    // Открытие модального окна
     $('[data-modal=consultation]').on('click', function() {
         $('.overlay, #consultation').fadeIn('slow');
     });
-
+    //Закрытие модального окна
     $('.modal__close').on('click', function() {
         $('.overlay, #consultation, #thanks, #order').fadeOut('slow');
     });
@@ -55,7 +55,10 @@ $(document).ready(function() {
     function validateForms(form) {
         $(form).validate({
             rules: {
-                name: "required",
+                name: {
+                    required: true,
+                    minlength: 2
+                },
                 phone: "required",
                 email: {
                     required: true,
@@ -76,4 +79,29 @@ $(document).ready(function() {
     validateForms('#consultation-form');
     validateForms('#consultation form');
     validateForms('#order form');
+
+
+    //Подставляем маску ввода телефона на сайт
+    $('input[name=phone]').mask("+7 (999) 999-99-99");
+
+    $('form').submit(function(e) {
+        e.preventDefault(); // e.preventDefault помогает отменить стандартное поведение браузера
+
+        if (!$(this).valid()) {
+            return;
+        }
+
+        $.ajax({
+            type: "POST",
+            url: "mailer/smart.php",
+            data: $(this).serialize()
+        }).done(function() {
+            $(this).find("input").val("");
+            $('#consultation, #order').fadeOut();
+            $('.overlay, #thanks').fadeIn('slow');
+
+            $('form').trigger('reset');
+        });
+        return false;
+    });
 });
