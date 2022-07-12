@@ -25,5 +25,9 @@
         "url": "https://github.com/Grin1988/heart_rate_monitor/issues"
     },
     "homepage": "https://github.com/Grin1988/heart_rate_monitor#readme",
-    "description": ""
+    "description": "",
+    "dependencies": {
+        "gulp-htmlmin": "^5.0.1",
+        "gulp-imagemin": "^7.1.0"
+    }
 }
